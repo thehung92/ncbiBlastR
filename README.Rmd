@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of ncbiBlastR is to ...
+The goal of ncbiBlastR is to submit the sequence to NCBI blast and extract the table from the response in HTML format.
 
 ## Installation
 
@@ -53,12 +53,29 @@ rbcLres |>
   extract_table_fromGET()
 ```
 
-## current structure of the library
+## Current structure of the library
 
 ```mermaid
-graph TD;
-    A-->B;
-    A-->C;
-    B-->D;
-    C-->D;
+flowchart TD
+  input["input:<br>string of DNA_BASES"] --> F1
+  %%
+  subgraph F1 ["blast_api_wrapper"]
+    direction LR
+    f2("Start:<br>blast_api_megablast")
+    f2 --> f3{{"wait_and_check<br>There are hits?"}}
+    f3 -->|"yes"|output["End:<br>response<br>html format"]
+    f3 -->|"no"|f4("blast_api_blastn")
+    f4 --> f5{{"wait_and_check<br>ThereAreHits?"}}
+    f5 -->|"yes"|output
+    f5 -->|"no"|error("End:<br>message NoHit")
+  end
+  %%
+  F1 -->|html format|f6("extract_table_fromGET")
+  f6 --> return[output:<br>data frame]
+
+  %%
+  %%
+  %%
+  %%
+  %%
 ```

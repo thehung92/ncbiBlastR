@@ -13,7 +13,7 @@ git remote add origin https://github.com/thehung92/ncbiBlastR.git
 git push -u origin main
 # fast sync
 git add .
-git commit -m "build README with example"
+git commit -m "README with flowchart"
 git push
 ```
 
