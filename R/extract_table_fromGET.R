@@ -2,12 +2,13 @@
 #'
 #' @param res the GET result
 #' @return data frame
+#' @export
 extract_table_fromGET <- function(res) {
   df.blast = res |>
     xml2::read_html() |>
     rvest::html_nodes(xpath = '//table[@id="dscTable"]') |>
-    rvest::html_table() %>%
-    .[[1]]
+    rvest::html_table()
+  df.blast = df.blast[[1]]
   df.blast2 = df.blast |>
     dplyr::select(-1) |>
     clean_names() |>

@@ -3,6 +3,7 @@
 ## git repos from a new R package project
 
 ```shell
+# init
 echo "# ncbiBlastR" >> README.md
 git init
 git add .
@@ -10,6 +11,10 @@ git commit -m "first commit"
 git branch -M main
 git remote add origin https://github.com/thehung92/ncbiBlastR.git
 git push -u origin main
+# fast sync
+git add .
+git commit -m "build README with example"
+git push
 ```
 
 ## devtools, usethis, and testthat function

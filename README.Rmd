@@ -29,27 +29,36 @@ You can install the development version of ncbiBlastR from [GitHub](https://gith
 devtools::install_github("thehung92/ncbiBlastR")
 ```
 
-## Example
+## Submit a sequence for NCBI blast
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+```{r example, eval=FALSE}
 library(ncbiBlastR)
-## basic example code
+## the blast_api_wrapper
+res = blast_api_wrapper(rbcLseq)
+# it will run blast on NCBI first
+# the program will check if there are no hit. then run blastn next
+## extract the table from the response in HTML format with function
+res |>
+  extract_table_fromGET()
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+Example input and output data
 
-```{r cars}
-summary(cars)
+```{r}
+library(ncbiBlastR)
+# sequence to submit
+rbcLseq
+# table from request
+rbcLres |>
+  extract_table_fromGET()
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
+## current structure of the library
 
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```mermaid
+graph TD;
+    A-->B;
+    A-->C;
+    B-->D;
+    C-->D;
 ```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
