@@ -20,7 +20,7 @@ wait_and_check <- function(info) {
       xml2::xml_find_all("//comment()") |>
       as.character() |>
       stringr::str_subset("QBlastInfo")
-    status = stringr::str_subset(info2, "Status") %>%
+    status = stringr::str_subset(info2, "Status") |>
       stringr::str_detect("READY")
   }
   # check if there are hits
