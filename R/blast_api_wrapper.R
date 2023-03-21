@@ -5,6 +5,10 @@
 #'
 #' @param seq a sequence in character format
 #' @return a GET result that can be parse with read_html
+#' @examples
+#' rbcLres = blast_api_wrapper(rbcLseq)
+#' rbcLres |>
+#'  extract_table_fromGET()
 #' @export
 blast_api_wrapper <- function(seq) {
   # start with megablast

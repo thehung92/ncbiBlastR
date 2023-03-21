@@ -16,3 +16,8 @@ a GET result that can be parse with read_html
 use for blast the nucleotide sequence on ncbi blast database
 notes: only get 20 result, run with megablast option for fast query
 }
+\examples{
+rbcLres = blast_api_wrapper(rbcLseq)
+rbcLres |>
+ extract_table_fromGET()
+}
