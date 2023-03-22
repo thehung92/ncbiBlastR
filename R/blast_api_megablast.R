@@ -22,7 +22,7 @@ blast_api_megablast <- function(seq) {
     xml2::xml_find_all(xpath = "//comment()") |>
     as.character()
   info = stringr::str_subset(vt.comment, "QBlastInfoBegin")
-  info2 = info |> stringr::str_split_1("\n") |>
+  info2 = info |> stringr::str_split("\n") |> unlist() |>
     stringr::str_subset("=") |> trimws()
   info3 = info2 |> stringr::str_split("=") |>
     lapply(function(X){

@@ -24,7 +24,7 @@ blast_api_blastn <- function(seq) {
     as.character()
   info = stringr::str_subset(vt.comment, "QBlastInfoBegin")
   info2 = info |>
-    stringr::str_split_1("\n") |>
+    stringr::str_split("\n") |> unlist() |>
     stringr::str_subset("=") |> trimws()
   info3 = info2 |>
     stringr::str_split("=") |>
