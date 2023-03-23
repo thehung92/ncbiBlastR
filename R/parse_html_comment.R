@@ -5,6 +5,7 @@
 #' @param res response object from GET in html format
 #' @return a named vector of strings
 #' @export
+#' @keywords internal
 parse_html_comment <- function(res) {
   # parse comment from html
   res.html = res |> xml2::read_html()

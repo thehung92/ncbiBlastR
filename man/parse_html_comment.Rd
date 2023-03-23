@@ -15,3 +15,4 @@ a named vector of strings
 \description{
 This function will parse all the comment, then search for pattern 'QBlastInfo'
 }
+\keyword{internal}

@@ -17,19 +17,15 @@ blast_api_megablast <- function(seq) {
     CMD = "Put"
   ))
   # get the RID inside the comment block from the returned html
-  page.res = xml2::read_html(res)
-  vt.comment = xml2::read_html(res) |>
-    xml2::xml_find_all(xpath = "//comment()") |>
-    as.character()
-  info = stringr::str_subset(vt.comment, "QBlastInfoBegin")
-  info2 = info |> stringr::str_split("\n") |> unlist() |>
-    stringr::str_subset("=") |> trimws()
-  info3 = info2 |> stringr::str_split("=") |>
-    lapply(function(X){
-      key = trimws(X[1])
-      value = trimws(X[2])
-      names(value) = key
-      return(value)
-    }) |> unlist()
-  return(info3)
+  info = parse_html_comment(res)
+  info = strsplit(info, "\n")[[1]]
+  info = grep("=", info, value = TRUE) |> trimws()
+  ls.info = strsplit(info, " = ")
+  info2 = lapply(ls.info, function(X){
+    key = trimws(X[1])
+    value = trimws(X[2])
+    names(value) = key
+    return(value)
+  }) |> unlist()
+  return(info2)
 }

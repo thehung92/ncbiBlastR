@@ -12,11 +12,12 @@
 #' res |>
 #'  extract_table_fromGET()
 #' @export
-blast_api_wrapper <- function(seq) {
+blast_api_wrapper <- function(seq, verbose = FALSE) {
   # start with megablast
   info = blast_api_megablast(seq)
   rid = info["RID"]
   rtoe = info["RTOE"]
+  if (verbose) {print(rid); print(rtoe)}
   # check the status
   status = wait_and_check(rid, rtoe)
   # if there is no hit, redirection to rerun

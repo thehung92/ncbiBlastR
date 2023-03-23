@@ -4,7 +4,7 @@
 \alias{blast_api_wrapper}
 \title{Wrapper for blast api}
 \usage{
-blast_api_wrapper(seq)
+blast_api_wrapper(seq, verbose = FALSE)
 }
 \arguments{
 \item{seq}{a sequence in character format}
