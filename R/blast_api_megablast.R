@@ -4,11 +4,12 @@
 #' notes: at the start of the wrapper for fast result
 #' @param seq a sequence in character format
 #' @return an info vector with RID and RTOE (estimate time in second)
+#' @importFrom httr GET
 blast_api_megablast <- function(seq) {
   cat("Submit blastn megablast\n")
   url = "https://blast.ncbi.nlm.nih.gov/Blast.cgi"
   # submit the request
-  res = httr::GET(url, query = list(
+  res = GET(url, query = list(
     QUERY = seq,
     DATABASE = "nt",
     PROGRAM = "blastn", MEGABLAST = "on",

@@ -46,11 +46,12 @@ Example input and output data
 
 ```{r}
 library(ncbiBlastR)
-# sequence to submit
-rbcLseq
-# table from request
-rbcLres |>
-  extract_table_fromGET()
+# example sequence to submit
+data(rbcLseq)
+res = blast_api_wrapper(rbcLseq)
+# extract table from request
+res |>
+ extract_table_fromHtml()
 ```
 
 ## Current structure of the library

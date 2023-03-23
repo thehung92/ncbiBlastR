@@ -15,10 +15,9 @@ Config/testthat/edition: 3
 Imports: 
     dplyr,
     httr,
-    janitor,
     rvest,
     stringr,
     xml2
 Depends: 
-    R (>= 4.10)
+    R (>= 4.1.0)
 RoxygenNote: 7.2.3
