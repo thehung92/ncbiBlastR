@@ -9,9 +9,9 @@
 #' @keywords internal
 parse_html_comment <- function(res) {
   # parse comment from html
-  res.html = res |> read_html()
-  comments = res.html |>
-    xml_find_all("//comment()") |>
+  res.html = res %>% read_html()
+  comments = res.html %>%
+    xml_find_all("//comment()") %>%
     as.character()
   # parse pattern in comment
   searchinfo = grep("QBlastInfo", comments, value = TRUE)

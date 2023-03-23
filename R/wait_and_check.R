@@ -27,13 +27,13 @@ wait_and_check <- function(rid, rtoe = 30, verbose = FALSE) {
     # parse the response from the server for QBlastInfo
     searchinfo = parse_html_comment(res)
     # check if Status = READY # assign status = TRUE to stop the loop
-    status = grepl("Status=READY", searchinfo, fixed = TRUE) |> any()
+    status = grepl("Status=READY", searchinfo, fixed = TRUE) %>% any()
     # for subsequent loop, use shorter wait time
     rtoe = 15
     counter = counter - 1
   }
   # check if there are hits after the loop break with status = TRUE
-  if (grepl("ThereAreHits=yes", searchinfo, fixed = TRUE) |> any()) {
+  if (grepl("ThereAreHits=yes", searchinfo, fixed = TRUE) %>% any()) {
     status = "yes"
   } else {
     status = "rerun"

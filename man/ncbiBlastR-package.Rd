@@ -4,8 +4,8 @@
 \name{ncbiBlastR-package}
 \alias{ncbiBlastR}
 \alias{ncbiBlastR-package}
-\title{ncbiBlastR: What the Package Does (Title Case)}
+\title{ncbiBlastR: send the sequence to NCBI blast server via API request}
 \description{
-More about what it does (maybe more than one line) Use four spaces when indenting paragraphs within the Description.
+Send DNA sequence to blastn with megablast mode on, database nt/nr If fail to get hits, submit again with blastn normal mode
 }
 \keyword{internal}

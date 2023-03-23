@@ -20,13 +20,13 @@ blast_api_megablast <- function(seq) {
   # get the RID inside the comment block from the returned html
   info = parse_html_comment(res)
   info = strsplit(info, "\n")[[1]]
-  info = grep("=", info, value = TRUE) |> trimws()
+  info = grep("=", info, value = TRUE) %>% trimws()
   ls.info = strsplit(info, " = ")
   info2 = lapply(ls.info, function(X){
     key = trimws(X[1])
     value = trimws(X[2])
     names(value) = key
     return(value)
-  }) |> unlist()
+  }) %>% unlist()
   return(info2)
 }

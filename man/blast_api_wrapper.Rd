@@ -20,6 +20,6 @@ notes: only get 20 result, run with megablast option for fast query
 data(rbcLseq)
 res = blast_api_wrapper(rbcLseq)
 data(rbcLres)
-res |>
+res \%>\%
  extract_table_fromGET()
 }

@@ -9,7 +9,7 @@
 #' data(rbcLseq)
 #' res = blast_api_wrapper(rbcLseq)
 #' data(rbcLres)
-#' res |>
+#' res %>%
 #'  extract_table_fromGET()
 #' @export
 blast_api_wrapper <- function(seq, verbose = FALSE) {
