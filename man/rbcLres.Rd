@@ -5,11 +5,10 @@
 \alias{rbcLres}
 \title{blast result for the rbcL gene sequence}
 \format{
-## `rbcLres`
 an html response that can be parsed with xml2 library
-\describe{
-  \item{the goal is to extract table data from this html response}
-  \item{if the response has no table with data, send error message}
+\itemize{
+  \item the goal is to extract table data from this html response
+  \item if the response has no table with data, send error message
 }
 }
 \source{

@@ -5,14 +5,13 @@
 \alias{rbcLseq}
 \title{DNA sequence for the rbcL gene}
 \format{
-## `rbclSeq`
 A string with 1392 characters:
-\describe{
-  \item{a sequence of ACTG character}
-  \item{read from fasta file}
-  \item{header: ENA|D28335|D28335}
-  \item{header: 1 Clintonia uniflora chloroplast rbcL gene.}
+\itemize{
+  \item a sequence of ACTG character
+  \item read from fasta file
+  \item header: ENA|D28335|D28335.1 Clintonia uniflora chloroplast rbcL gene
 }
+The raw data can be found in examples code
 }
 \source{
 <https://www.ebi.ac.uk/ena/browser/view/D28335>
@@ -22,5 +21,10 @@ rbcLseq
 }
 \description{
 the Sequence is downloaded as a fasta file from ENA website
+}
+\examples{
+path = system.file("extdata", package="ncbiBlastR")
+files = list.files(path, full.names=TRUE)
+readLines(files[[1]])
 }
 \keyword{datasets}

@@ -6,6 +6,6 @@
 \alias{ncbiBlastR-package}
 \title{ncbiBlastR: send the sequence to NCBI blast server via API request}
 \description{
-Send DNA sequence to blastn with megablast mode on, database nt/nr If fail to get hits, submit again with blastn normal mode
+Send DNA sequence to blastn with megablast mode on. database nt/nr If fail to get hits, submit again with blastn normal mode
 }
 \keyword{internal}
