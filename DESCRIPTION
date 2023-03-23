@@ -1,7 +1,7 @@
 Package: ncbiBlastR
 Type: Package
 Title: send the sequence to NCBI blast server via API request
-Version: 0.2.0
+Version: 0.2.1
 Author: Hung Nguyen
 Maintainer: Hung Nguyen <thehung92phuyenf@gmail.com>
 Description: Send DNA sequence to blastn with megablast mode on. database nt/nr
@@ -18,7 +18,7 @@ Imports:
     magrittr,
     rvest,
     stringr,
-    xml2
+    xml2 (>= 1.3)
 Depends: 
-    R (>= 3.6.3)
+    R (>= 3.6)
 RoxygenNote: 7.2.3
