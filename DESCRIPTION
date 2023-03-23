@@ -4,7 +4,7 @@ Title: send the sequence to NCBI blast server via API request
 Version: 0.2.0
 Author: Hung Nguyen
 Maintainer: Hung Nguyen <thehung92phuyenf@gmail.com>
-Description: Send DNA sequence to blastn with megablast mode on, database nt/nr
+Description: Send DNA sequence to blastn with megablast mode on. database nt/nr
     If fail to get hits, submit again with blastn normal mode
 License: MIT + file LICENSE
 Encoding: UTF-8

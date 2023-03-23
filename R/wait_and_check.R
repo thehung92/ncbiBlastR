@@ -17,9 +17,20 @@ wait_and_check <- function(rid, rtoe = 30, verbose = FALSE) {
   while (!status) {
     # check counter to break the loop if it run too long
     if (counter == 0) {
-      # return the res for the user to check manually
-      res <<- res
-      break
+      # wait for user input
+      input = ""
+      while (!input %in% c("Y", "N")) {
+        input = readline("The api took too long to respond. Do you want to wait for another minute? [YN]: ")
+      }
+      # return the res for the user to check manually if cancel now
+      if (input %in% c("Y","y")) {
+        counter = 5
+      } else if (input %in% c("N","n")) {
+        print(rid)
+        print(rtoe)
+        res <<- res
+        break
+      }
     }
     cat(paste0("Wait for it ... (", rtoe, "s) ...\n"))
     Sys.sleep(as.numeric(rtoe))
