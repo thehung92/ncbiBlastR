@@ -4,7 +4,7 @@
 \alias{wait_and_check}
 \title{wait and check if there are hits}
 \usage{
-wait_and_check(info)
+wait_and_check(rid, rtoe = 30, verbose = FALSE)
 }
 \arguments{
 \item{info}{parsed from GET result}

@@ -17,7 +17,9 @@ use for blast the nucleotide sequence on ncbi blast database
 notes: only get 20 result, run with megablast option for fast query
 }
 \examples{
-rbcLres = blast_api_wrapper(rbcLseq)
-rbcLres |>
+data(rbcLseq)
+res = blast_api_wrapper(rbcLseq)
+data("rbcLres")
+res |>
  extract_table_fromGET()
 }

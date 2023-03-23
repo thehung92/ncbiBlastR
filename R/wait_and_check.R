@@ -4,32 +4,40 @@
 #' @param info parsed from GET result
 #' @export
 #' @keywords internal
-wait_and_check <- function(info) {
+wait_and_check <- function(rid, rtoe = 30, verbose = FALSE) {
+  if (verbose == TRUE) {
+    # return the info to check manually
+    print(rid)
+    print(rtoe)
+  }
   # check the status of the search after the estimated time
   status = FALSE
+  counter = 5
+  # in while loop
   while (!status) {
-    cat(paste0("wait ", info["RTOE"], "s\n"))
-    Sys.sleep(as.numeric(info["RTOE"]))
-    url = "https://blast.ncbi.nlm.nih.gov/Blast.cgi"
-    res2 = httr::GET(url, query = list(
-      CMD = "Get", FORMAT_OBJECT = "SearchInfo",
-      RID = info["RID"]
-    ))
-    info2 = res2 |>
-      xml2::read_html() |>
-      xml2::xml_find_all("//comment()") |>
-      as.character() |>
-      stringr::str_subset("QBlastInfo")
-    status = stringr::str_subset(info2, "Status") |>
-      stringr::str_detect("READY")
+    # check counter to break the loop if it run too long
+    if (counter == 0) {
+      # return the res for the user to check manually
+      res <<- res
+      break
+    }
+    cat(paste0("Wait for it ... (", rtoe, "s) ...\n"))
+    Sys.sleep(as.numeric(rtoe))
+    res = query_searchinfo(rid)
+    # parse the response from the server for QBlastInfo
+    searchinfo = parse_html_comment(res)
+    # check if Status = READY # assign status = TRUE to stop the loop
+    status = grepl("Status=READY", searchinfo, fixed = TRUE) |> any()
+    # for subsequent loop, use shorter wait time
+    rtoe = 15
+    counter = counter - 1
   }
-  # check if there are hits
-  boolean = stringr::str_subset(info2, "ThereAreHits") |>
-    stringr::str_detect("=yes")
-  if (boolean) {
+  # check if there are hits after the loop break with status = TRUE
+  if (grepl("ThereAreHits=yes", searchinfo, fixed = TRUE) |> any()) {
     status = "yes"
   } else {
     status = "rerun"
   }
+  # explicit return
   return(status)
 }

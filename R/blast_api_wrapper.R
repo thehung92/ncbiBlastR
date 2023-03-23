@@ -6,16 +6,20 @@
 #' @param seq a sequence in character format
 #' @return a GET result that can be parse with read_html
 #' @examples
-#' rbcLres = blast_api_wrapper(rbcLseq)
-#' rbcLres |>
+#' data(rbcLseq)
+#' res = blast_api_wrapper(rbcLseq)
+#' data("rbcLres")
+#' res |>
 #'  extract_table_fromGET()
 #' @export
 blast_api_wrapper <- function(seq) {
   # start with megablast
   info = blast_api_megablast(seq)
+  rid = info["RID"]
+  rtoe = info["RTOE"]
   # check the status
-  status = wait_and_check(info)
-  # redirection to rerun
+  status = wait_and_check(rid, rtoe)
+  # if there is no hit, redirection to rerun
   if (status == "rerun") {
     info = blast_api_blastn(seq)
     status = wait_and_check(info)
@@ -24,11 +28,7 @@ blast_api_wrapper <- function(seq) {
       stop("There are no hits of this sequence with blastn")
     }
   }
-  # get the result
-  url = "https://blast.ncbi.nlm.nih.gov/Blast.cgi"
-  res = httr::GET(url, query = list(
-    CMD = "Get", RID = info["RID"],
-    FORMAT_TYPE = "HTML"
-  ))
+  # get the result in html format
+  res = query_result(rid)
   return(res)
 }
