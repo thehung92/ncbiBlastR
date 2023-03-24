@@ -34,12 +34,11 @@ devtools::install_github("thehung92/ncbiBlastR")
 ```{r example, eval=FALSE}
 library(ncbiBlastR)
 ## the blast_api_wrapper
-res = blast_api_wrapper(rbcLseq)
+res <- blast_api_wrapper(rbcLseq)
 # it will run blast on NCBI first
 # the program will check if there are no hit. then run blastn next
 ## extract the table from the response in HTML format with function
 df.result <-  extract_table_fromHtml(res)
-df.result
 ```
 
 Example input and output data
@@ -48,9 +47,11 @@ Example input and output data
 library(ncbiBlastR)
 # example sequence to submit
 data(rbcLseq)
-res <- blast_api_wrapper(rbcLseq)
+# res <- blast_api_wrapper(rbcLseq)
 #  example data to extract table
+data(rbcLres)
 df.result <- extract_table_fromHtml(rbcLres)
+df.result
 ```
 
 ## Current structure of the library
