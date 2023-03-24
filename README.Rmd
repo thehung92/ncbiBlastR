@@ -47,6 +47,7 @@ Example input and output data
 library(ncbiBlastR)
 # example sequence to submit
 data(rbcLseq)
+rbcLseq
 # res <- blast_api_wrapper(rbcLseq)
 #  example data to extract table
 data(rbcLres)
