@@ -38,8 +38,8 @@ res = blast_api_wrapper(rbcLseq)
 # it will run blast on NCBI first
 # the program will check if there are no hit. then run blastn next
 ## extract the table from the response in HTML format with function
-res |>
-  extract_table_fromGET()
+df.result <-  extract_table_fromHtml(res)
+df.result
 ```
 
 Example input and output data
@@ -48,10 +48,9 @@ Example input and output data
 library(ncbiBlastR)
 # example sequence to submit
 data(rbcLseq)
-res = blast_api_wrapper(rbcLseq)
-# extract table from request
-res |>
- extract_table_fromHtml()
+res <- blast_api_wrapper(rbcLseq)
+#  example data to extract table
+df.result <- extract_table_fromHtml(rbcLres)
 ```
 
 ## Current structure of the library
