@@ -1,7 +1,7 @@
 Package: ncbiBlastR
 Type: Package
 Title: send the sequence to NCBI blast server via API request
-Version: 0.2.2
+Version: 0.2.3
 Author: Hung Nguyen
 Maintainer: Hung Nguyen <thehung92phuyenf@gmail.com>
 Description: Send DNA sequence to blastn with megablast mode on. database nt/nr
